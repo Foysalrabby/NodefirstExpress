@@ -1,4 +1,6 @@
 var express=require('express');
+var cors = require('cors');
+var bodyParser = require('body-parser')
 
 var app=express();
 
@@ -10,6 +12,9 @@ var app=express();
 //     res.send("this is test")
 // }
 // app.get('/',rootCall);
+
+app.use(cors());
+app.use(bodyParser.json());
 const users=['farzana','rafi','rabbi','sima','rima'];
 app.get('/', function (req, res) {
 
@@ -32,6 +37,15 @@ app.get('/', function (req, res) {
 
 
   })
+
+
+  //post 
+  app.post('/adduser',(req,res)=>{
+
+    console.log("post data ..");
+    console.log(req.body);
+  } )
+
 
 app.listen(3000 ,()=> console.log("port is running"));
 
